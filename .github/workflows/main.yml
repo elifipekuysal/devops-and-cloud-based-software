@@ -58,6 +58,9 @@ jobs:
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
 
+    - name: Tag Image
+      run: docker tag student_service:latest $REPO_NAME/$IMAGE_NAME:latest
+
     - name: Push image to docker hub Container Registry
       run: | 
           docker push $REPO_NAME/$IMAGE_NAME
