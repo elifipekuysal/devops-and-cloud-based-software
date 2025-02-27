@@ -22,15 +22,15 @@ jobs:
     - name: "Check files existence"
       uses: andstor/file-existence-action@v2
       with:
-        files: "$APP_DIR/postman/collection.json,postman/environment.json"
+        files: "${{ env.APP_DIR }}/postman/collection.json,${{ env.APP_DIR }}/postman/environment.json"
         fail: true
 
     - name: Run API Tests
       id: run-newman
       uses: anthonyvscode/newman-action@master
       with:
-        collection: $APP_DIR/postman/collection.json
-        environment: $APP_DIR/postman/environment.json
+        collection: "${{ env.APP_DIR }}/postman/collection.json"
+        environment: "${{ env.APP_DIR }}/postman/environment.json"
         reporters: cli
         bail: true
 
