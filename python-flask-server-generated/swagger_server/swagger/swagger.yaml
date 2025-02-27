@@ -105,17 +105,24 @@ components:
         grade_records:
           type: array
           items:
-            maximum: 10
-            minimum: 0
-            type: number
-            format: float
+            type: object
+            properties:
+              subject_name:
+                type: string
+              grade:
+                type: number
+                format: float
+                minimum: 0
+                maximum: 10
       example:
         student_id: 0
+        first_name: first_name
         last_name: last_name
         grade_records:
-        - 6.0274563
-        - 6.0274563
-        first_name: first_name
+          - subject_name: "The Mathematics of Quantum Neutrino Fields"
+            grade: 6.1
+          - subject_name: "20th Century History"
+            grade: 8.9
     GradeRecord:
       required:
       - grade
